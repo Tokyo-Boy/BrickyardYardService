@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Brickyard Yard Service</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --brick-red: #a0522d;
+            --grass-green: #2e8b57;
+            --dark-slate: #333;
+            --light-gray: #f9f9f9;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark-slate);
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        .nav-container {
+            max-width: 1400px; 
+            margin: auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center; 
+            gap: 12px;           
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--brick-red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .logo img { height: 50px; width: auto; display: block; }
+        .logo span { color: var(--grass-green); }
+
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li { margin-left: 30px; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-slate);
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active { color: var(--brick-red); }
+
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background: var(--dark-slate);
+            margin: 4px;
+            border-radius: 5px;
+        }
+
+        /* --- CONTACT HERO --- */
+        .contact-hero {
+            background: var(--dark-slate);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .contact-hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+
+        /* --- CONTACT SECTION --- */
+        .contact-section { padding: 80px 0; }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-form h2 { margin-bottom: 20px; color: var(--brick-red); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .submit-btn {
+            background: var(--brick-red);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            width: 100%;
+        }
+
+        .submit-btn:hover { background: #8b4513; }
+
+        /* SUCCESS MESSAGE STYLES */
+        #success-msg {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #c3e6cb;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Info Sidebar */
+        .contact-info {
+            background: var(--light-gray);
+            padding: 40px;
+            border-radius: 10px;
+            height: fit-content;
+        }
+
+        .info-item { margin-bottom: 30px; }
+        .info-item h3 { color: var(--grass-green); margin-bottom: 10px; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #222;
+            color: #bbb;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            .nav-links {
+                position: absolute;
+                right: 0px;
+                height: 92vh;
+                top: 80px;
+                background-color: var(--white);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 70%;
+                transform: translateX(100%);
+                transition: transform 0.5s ease-in;
+                box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            }
+            .nav-links li { margin: 40px 0; }
+            .nav-active { transform: translateX(0%); }
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/Brickyard.webp" alt="Brickyard Logo"> 
+                <div>Brickyard <span>Yard Service</span></div>
+            </a>
+            
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Request a Free Estimate</h1>
+            <p>Tell us about your project and we'll get back to you within 24 hours.</p>
+        </div>
+    </section>
+
+    <section class="contact-section container">
+        <div class="contact-grid">
+            
+            <div class="contact-form">
+                <div id="success-msg">Thank you! Your request has been sent successfully. We will contact you shortly.</div>
+                
+                <form id="quoteForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Service Needed</label>
+                        <select id="service" name="service">
+                            <option value="hardscaping">Hardscaping (Patios/Walls)</option>
+                            <option value="maintenance">Lawn Maintenance</option>
+                            <option value="design">Landscape Design</option>
+                            <option value="other">Other Inquiry</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Project Details</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Request</button>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <div class="info-item">
+                    <h3>Call Us</h3>
+                    <p>(555) 123-4567</p>
+                </div>
+                <div class="info-item">
+                    <h3>Email Us</h3>
+                    <p>hello@brickyardyard.com</p>
+                </div>
+                <div class="info-item">
+                    <h3>Hours</h3>
+                    <p>Mon - Fri: 7am - 6pm<br>Sat: 8am - 12pm<br>Sun: Closed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Brickyard Yard Service. Serving your neighborhood with pride.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Menu Logic
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('nav-active');
+        });
+
+        // Form Submission Logic (Prevents localhost errors)
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // This stops the page from refreshing or looking for a server
+            
+            // Show success message and hide the form
+            document.getElementById('success-msg').style.display = 'block';
+            this.style.display = 'none';
+            
+            // Scroll to top of the form area
+            window.scrollTo({ top: 200, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

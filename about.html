@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Brickyard Yard Service</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --brick-red: #a0522d;
+            --grass-green: #2e8b57;
+            --dark-slate: #333;
+            --light-gray: #f9f9f9;
+            --white: #ffffff;
+            --border-color: #eee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark-slate);
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        .nav-container {
+            max-width: 1400px; 
+            margin: auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center; 
+            gap: 12px;           
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--brick-red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;       
+            width: auto;
+            display: block;
+        }
+
+        .logo span { color: var(--grass-green); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li { margin-left: 30px; }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-slate);
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--brick-red);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background: var(--dark-slate);
+            margin: 4px;
+            border-radius: 5px;
+        }
+
+        /* --- ABOUT HERO --- */
+        .about-hero {
+            background: var(--dark-slate);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .about-hero h1 { font-size: 3rem; margin-bottom: 10px; }
+
+        /* --- CONTENT SECTIONS --- */
+        .about-content { padding: 80px 0; }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 { color: var(--brick-red); margin-bottom: 20px; font-size: 2rem; }
+        .about-text p { margin-bottom: 15px; }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* --- TIMELINE SECTION --- */
+        .history { padding: 80px 0; background-color: var(--white); }
+        .timeline {
+            border-left: 4px solid var(--grass-green);
+            padding-left: 30px;
+            margin: 40px 0;
+        }
+        .timeline-item { position: relative; margin-bottom: 40px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -39px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            background: var(--brick-red);
+            border-radius: 50%;
+        }
+        .timeline-year { font-weight: 700; color: var(--grass-green); font-size: 1.2rem; }
+
+        /* --- TEAM SECTION --- */
+        .team { padding: 80px 0; background: var(--light-gray); text-align: center; }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .team-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .team-card h3 { color: var(--brick-red); margin-bottom: 5px; }
+        .team-card span { font-weight: 600; font-size: 0.9rem; color: #777; }
+
+        /* --- FAQ SECTION --- */
+        .faq { padding: 80px 0; }
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+        .faq-item h4 { color: var(--grass-green); margin-bottom: 10px; }
+
+        /* --- VALUES --- */
+        .values {
+            background: var(--brick-red);
+            color: white;
+            padding: 80px 0;
+        }
+        .values h2 { text-align: center; margin-bottom: 40px; }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .value-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .value-card:hover { background: rgba(255, 255, 255, 0.2); }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--dark-slate);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            .nav-links {
+                position: absolute;
+                right: 0px;
+                height: 92vh;
+                top: 80px;
+                background-color: var(--white);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 70%;
+                transform: translateX(100%);
+                transition: transform 0.5s ease-in;
+                box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            }
+            .nav-links li { margin: 40px 0; }
+            .nav-active { transform: translateX(0%); }
+            .about-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/Brickyard.webp" alt="Brickyard Logo"> 
+                <div>Brickyard <span>Yard Service</span></div>
+            </a>
+            
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="about-hero">
+        <div class="container">
+            <h1>Our Story</h1>
+            <p>Building local beauty since 2012.</p>
+        </div>
+    </section>
+
+    <section class="about-content container">
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="images/BrickyardStaff.png" alt="Landscaping in progress">
+            </div>
+            <div class="about-text">
+                <h2>Experience & Integrity</h2>
+                <p>Brickyard Yard Service began with a simple mission: to provide the community with durable, beautiful outdoor spaces that stand the test of time.</p>
+                <p>What started as a single truck and a lawn mower has grown into a full-scale landscaping and hardscaping firm. We don't just cut grass— we engineer outdoor environments that increase property value and enhance your quality of life.</p>
+                <p>Whether it’s a modern brick patio or a perfectly leveled lawn, we bring the "Brickyard Standard" to every project.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="history container">
+        <h2 style="color: var(--brick-red);">Our Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">2012</div>
+                <p>Brickyard Yard Service founded with a focus on local lawn care.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2016</div>
+                <p>Expanded into Hardscaping and Brick Masonry, our true passion.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2021</div>
+                <p>Awarded "Best of Local Service" for our landscape design work.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">Today</div>
+                <p>A team of 15 dedicated experts serving the entire metropolitan area.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="team">
+        <div class="container">
+            <h2>Meet the Experts</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <h3>Ken Rellard</h3>
+                    <span>Founder & Head Designer</span>
+                    <p>15+ years in landscape architecture.</p>
+                </div>
+                <div class="team-card">
+                    <h3>Karen Throne</h3>
+                    <span>Hardscaping Specialist</span>
+                    <p>Expert in brick masonry and stone work.</p>
+                </div>
+                <div class="team-card">
+                    <h3>David Richard</h3>
+                    <span>Maintenance Lead</span>
+                    <p>Ensuring your lawn stays green year-round.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq container">
+        <h2 style="text-align: center; margin-bottom: 40px;">Common Questions</h2>
+        
+        <div class="faq-item">
+            <h4>How often should my lawn be mowed?</h4>
+            <p>For most residential lawns, we recommend weekly service during the peak growing season. This ensures we never remove more than one-third of the grass blade at once, which keeps the root system healthy and vibrant.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>How do you handle persistent weeds in the yard?</h4>
+            <p>We use a multi-step approach: first, we identify the weed type (broadleaf or grassy). We then apply targeted pre-emergent treatments in early spring and spot-treat any breakthroughs with eco-safe solutions throughout the year to keep your turf clean.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>Do you offer free estimates?</h4>
+            <p>Yes, we provide detailed, no-obligation quotes for all landscaping and hardscaping projects.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h4>Are you licensed and insured?</h4>
+            <p>Absolutely. We are fully bonded, licensed, and insured for your peace of mind and ours.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h4>How long does a typical patio installation take?</h4>
+            <p>Most standard brick patios are completed within 3 to 5 business days, depending on the site prep required.</p>
+        </div>
+    </section>
+
+    <section class="values">
+        <div class="container">
+            <h2>The Brickyard Commitment</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <h3>Quality Materials</h3>
+                    <p>We only use high-grade bricks and healthy sod to ensure your landscape thrives for years.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Reliable Timing</h3>
+                    <p>We show up when we say we will. Your time is as valuable as your property.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Sustainability</h3>
+                    <p>We utilize eco-friendly planting techniques and drainage solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Brickyard Yard Service. Serving your neighborhood with pride.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('nav-active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('nav-active');
+            });
+        });
+    </script>
+</body>
+</html>

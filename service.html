@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Brickyard Yard Service</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --brick-red: #a0522d;
+            --grass-green: #2e8b57;
+            --dark-slate: #333;
+            --light-gray: #f9f9f9;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark-slate);
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        .nav-container {
+            max-width: 1400px; 
+            margin: auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center; 
+            gap: 12px;           
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--brick-red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .logo img { height: 50px; width: auto; display: block; }
+        .logo span { color: var(--grass-green); }
+
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li { margin-left: 30px; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-slate);
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active { color: var(--brick-red); }
+
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background: var(--dark-slate);
+            margin: 4px;
+            border-radius: 5px;
+        }
+
+        /* --- SERVICES HERO --- */
+        .services-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/Yard.webp');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .services-hero h1 { font-size: 3rem; margin-bottom: 10px; }
+
+        /* --- SERVICE DETAIL SECTIONS --- */
+        .service-detail { padding: 80px 0; }
+        .service-row {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 100px;
+        }
+
+        .service-row:nth-child(even) { flex-direction: row-reverse; }
+
+        .service-text { flex: 1; }
+        .service-text h2 { color: var(--brick-red); font-size: 2.2rem; margin-bottom: 20px; }
+        .service-text ul { list-style: none; margin-top: 20px; }
+        .service-text li { margin-bottom: 10px; padding-left: 25px; position: relative; }
+        .service-text li::before { content: '→'; position: absolute; left: 0; color: var(--grass-green); font-weight: bold; }
+
+        .service-image { flex: 1; }
+        .service-image img { width: 100%; border-radius: 15px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+
+        /* --- PRICING/PACKAGES BOX --- */
+        .packages { background: var(--light-gray); padding: 80px 0; text-align: center; }
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .package-card {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+
+        .package-card h3 { color: var(--grass-green); margin-bottom: 15px; font-size: 1.5rem; }
+        .price { font-size: 2rem; font-weight: 700; color: var(--dark-slate); margin-bottom: 20px; }
+        .price span { font-size: 1rem; color: #777; }
+
+        .btn {
+            padding: 12px 25px;
+            background: var(--brick-red);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .btn:hover { background: #8b4513; transform: translateY(-2px); }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #222;
+            color: #bbb;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            .nav-links {
+                position: absolute;
+                right: 0px;
+                height: 92vh;
+                top: 80px;
+                background-color: var(--white);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 70%;
+                transform: translateX(100%);
+                transition: transform 0.5s ease-in;
+                box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            }
+            .nav-links li { margin: 40px 0; }
+            .nav-active { transform: translateX(0%); }
+            
+            .service-row, .service-row:nth-child(even) { flex-direction: column; text-align: center; }
+            .service-text li { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/Brickyard.webp" alt="Brickyard Logo"> 
+                <div>Brickyard <span>Yard Service</span></div>
+            </a>
+            
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="service.html" class="active">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="services-hero">
+        <div class="container">
+            <h1>Our Professional Services</h1>
+            <p>From routine maintenance to complete landscape transformations.</p>
+        </div>
+    </section>
+
+    <section class="service-detail container">
+        <div class="service-row">
+            <div class="service-text">
+                <h2>Custom Hardscaping</h2>
+                <p>We build the foundation of your outdoor living space. Our hardscaping services combine structural integrity with aesthetic beauty to increase your property value.</p>
+                <ul>
+                    <li>Brick & Stone Patios</li>
+                    <li>Retaining Walls & Steps</li>
+                    <li>Walkways & Driveways</li>
+                    <li>Fire Pits & Outdoor Kitchens</li>
+                </ul>
+            </div>
+            <div class="service-image">
+                <img src="images/outside.png" alt="Hardscaping Project">
+            </div>
+        </div>
+
+        <div class="service-row">
+            <div class="service-text">
+                <h2>Full-Service Lawn Care</h2>
+                <p>A great yard starts with the grass. We provide consistent, professional care to keep your lawn thick, green, and weed-free all year long.</p>
+                <ul>
+                    <li>Precision Mowing & Edging</li>
+                    <li>Aeration & Overseeding</li>
+                    <li>Organic Fertilization Programs</li>
+                    <li>Mulching & Bed Maintenance</li>
+                </ul>
+            </div>
+            <div class="service-image">
+                <img src="images/Service.png" alt="Lawn Maintenance">
+            </div>
+        </div>
+    </section>
+
+    <section class="packages">
+        <div class="container">
+            <h2 style="font-size: 2.2rem; margin-bottom: 10px;">Maintenance Packages</h2>
+            <p>Simple, flat-rate options for a worry-free yard.</p>
+            
+            <div class="package-grid">
+                <div class="package-card">
+                    <h3>Basic Mow</h3>
+                    <div class="price">Starting at $45<span>/visit</span></div>
+                    <p>Includes mowing, string trimming around obstacles, and blowing clippings off hard surfaces.</p>
+                    <a href="contact.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="package-card" style="border-color: var(--grass-green); transform: scale(1.05); position: relative;">
+                    <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--grass-green); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">MOST POPULAR</div>
+                    <h3>Full Estate Care</h3>
+                    <div class="price">Starting at $120<span>/month</span></div>
+                    <p>Mowing, edging, monthly bed weeding, and seasonal fertilization to keep everything perfect.</p>
+                    <a href="contact.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="package-card">
+                    <h3>Seasonal Cleanup</h3>
+                    <div class="price">Quote Required</div>
+                    <p>Comprehensive leaf removal, perennial pruning, and gutter cleaning to prep for the season.</p>
+                    <a href="contact.html" class="btn">Get a Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Brickyard Yard Service. Serving your neighborhood with pride.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('nav-active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('nav-active');
+            });
+        });
+    </script>
+</body>
+</html>
